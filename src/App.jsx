@@ -76,7 +76,7 @@ function MainApp() {
  */
 function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/send-SEND">
             <div className="min-h-screen bg-bg-subtle text-text-primary flex flex-col font-sans pb-20 md:pb-0">
                 {/* Minimal Header - Hidden on mobile, visible on desktop */}
                 <header className="h-20 hidden md:flex items-center justify-between px-6 md:px-12 bg-white border-b border-border-subtle z-50 sticky top-0">
