@@ -46,7 +46,6 @@ h4,
   font-family: var(--font-serif);
 }
 
-/* Custom scrollbar for text areas */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
