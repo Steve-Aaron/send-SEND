@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import { CampaignSteps } from './components/CampaignSteps';
 import { InformationSection } from './components/InformationSection';
 import { AboutUs } from './components/AboutUs';
@@ -76,7 +76,7 @@ function MainApp() {
  */
 function App() {
     return (
-        <BrowserRouter basename="/send-SEND">
+        <HashRouter>
             <div className="min-h-screen bg-bg-subtle text-text-primary flex flex-col font-sans pb-20 md:pb-0">
                 {/* Minimal Header - Hidden on mobile, visible on desktop */}
                 <header className="h-20 hidden md:flex items-center justify-between px-6 md:px-12 bg-white border-b border-border-subtle z-50 sticky top-0">
@@ -121,7 +121,7 @@ function App() {
                     </div>
                 </footer>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
