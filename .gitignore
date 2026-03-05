@@ -23,3 +23,16 @@ Icon[]
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Dependencies
+node_modules/
+
+# Production output
+dist/
+
+# Local env files
+.env*.local
+
+# Editor folders
+.vscode/
+.idea/
