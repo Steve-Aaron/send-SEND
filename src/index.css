@@ -67,3 +67,14 @@ h4,
 .h-75vh {
   height: 75vh;
 }
+
+.prose-leading-sentence>p:first-of-type {
+  font-weight: var(--font-weight-medium);
+  --tw-font-weight: var(--font-weight-medium);
+  font-size: var(--text-lg);
+}
+
+.shaded-gradient {
+  background-image: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.4) 45%, rgba(255, 255, 255, 0.4) 55%, transparent 60%);
+  background-size: 20px 20px;
+}

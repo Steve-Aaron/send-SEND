@@ -38,9 +38,10 @@ export function MobileNav() {
                             <div className="absolute left-1/2 -top-6 -translate-x-1/2">
                                 <button
                                     onClick={() => setIsModalOpen(true)}
-                                    className="flex items-center justify-center w-16 h-16 bg-accent rounded-full shadow-lg shadow-accent/30 text-white transform transition-transform active:scale-95 group cursor-pointer"
+                                    className="flex flex-col items-center justify-center w-16 h-16 bg-accent rounded-full shadow-lg shadow-accent/30 text-white transform transition-transform active:scale-95 group cursor-pointer"
                                 >
                                     <Mail className="w-7 h-7 group-hover:scale-110 transition-transform" />
+                                    <span className="text-[10px] font-bold uppercase">Send</span>
                                 </button>
                             </div>
 

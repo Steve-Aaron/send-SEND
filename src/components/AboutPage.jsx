@@ -19,19 +19,19 @@ export function AboutPage() {
         {
             title: "Information Gathering",
             subtitle: "Stage I — The foundation of policy change",
-            description: "The Government collects evidence from experts, affected families, and professionals. Your firsthand experience is critical here.",
+            description: "The Government reviews how SEND support currently works and identifies areas where improvements may be needed. This stage helps highlight issues affecting children, young people and their families.",
             color: "text-slate-500"
         },
         {
             title: "Public Consultation",
             subtitle: "Stage II — Your opportunity to speak",
-            description: "A formal proposal is published. This is the crucial window where public feedback can force revisions or halt harmful changes.",
+            description: "Parents, professionals and members of the public are invited to share their experiences and views on proposed reforms to the SEND system by 18 May.",
             color: "text-slate-500"
         },
         {
-            title: "Policy Formulation",
+            title: "Policy development",
             subtitle: "Stage III — Finalizing the new framework",
-            description: "The Government reviews all responses. Overwhelming public opposition has historically forced major rewrites at this stage.",
+            description: "The Government reviews consultation responses and other evidence before finalising policy decisions and any potential changes to SEND legislation.",
             color: "text-slate-500"
         }
     ];
