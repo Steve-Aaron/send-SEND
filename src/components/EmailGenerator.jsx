@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Mail, ArrowLeft, Copy, CheckCircle, Send } from "lucide-react";
 
 /**
@@ -79,32 +79,6 @@ Your Constituent in ${mpData.constituency} `;
     formData.lastName.trim() &&
     formData.email.trim() &&
     formData.address1.trim();
-
-  const sendEmail = (provider) => {
-    if (!mpData.email)
-      return alert(
-        "Unfortunately, we don't have an email address on file for this MP.",
-      );
-
-    const encodedSubject = encodeURIComponent(subject);
-    const encodedBody = encodeURIComponent(currentBody);
-    const to = mpData.email;
-
-    let url = "";
-
-    switch (provider) {
-      case "gmail":
-        url = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${encodedSubject}&body=${encodedBody}`;
-        break;
-      case "outlook":
-        url = `https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${encodedSubject}&body=${encodedBody}`;
-        break;
-      default:
-        url = `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
-    }
-
-    window.open(url, "_blank");
-  };
 
   const inputClass =
     "w-full bg-white border border-border-strong rounded-lg px-3 py-2 text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all text-sm";
@@ -255,28 +229,41 @@ Your Constituent in ${mpData.constituency} `;
             Send Using Your Preferred App:
           </p>
           <div className="grid grid-cols-2 gap-3">
-            <button
-              onClick={() => sendEmail("gmail")}
-              disabled={!isFormValid || !mpData.email}
-              className="bg-white border-2 border-brand text-brand hover:bg-brand hover:text-white rounded-xl py-2.5 font-bold transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-brand cursor-pointer"
+            <a
+              href={
+                mpData.email
+                  ? `https://mail.google.com/mail/?view=cm&fs=1&to=${mpData.email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(currentBody)}`
+                  : "#"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`bg-white border-2 border-brand text-brand hover:bg-brand hover:text-white rounded-xl py-2.5 font-bold transition-all flex items-center justify-center gap-2 ${!isFormValid || !mpData.email ? "opacity-50 pointer-events-none" : "cursor-pointer"}`}
             >
               Gmail
-            </button>
-            <button
-              onClick={() => sendEmail("outlook")}
-              disabled={!isFormValid || !mpData.email}
-              className="bg-white border-2 border-brand text-brand hover:bg-brand hover:text-white rounded-xl py-2.5 font-bold transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:hover:bg-white disabled:hover:text-brand cursor-pointer"
+            </a>
+            <a
+              href={
+                mpData.email
+                  ? `https://outlook.live.com/mail/0/deeplink/compose?to=${mpData.email}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(currentBody)}`
+                  : "#"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`bg-white border-2 border-brand text-brand hover:bg-brand hover:text-white rounded-xl py-2.5 font-bold transition-all flex items-center justify-center gap-2 ${!isFormValid || !mpData.email ? "opacity-50 pointer-events-none" : "cursor-pointer"}`}
             >
               Outlook
-            </button>
+            </a>
           </div>
-          <button
-            onClick={() => sendEmail("default")}
-            disabled={!isFormValid || !mpData.email}
-            className="w-full bg-accent hover:bg-accent-hover text-white shadow-lg rounded-xl py-4 font-bold transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:shadow-none cursor-pointer"
+          <a
+            href={
+              mpData.email
+                ? `mailto:${mpData.email}?subject=${encodeURIComponent(subject.trim())}&body=${encodeURIComponent(currentBody.trim())}`
+                : "#"
+            }
+            className={`w-full bg-accent hover:bg-accent-hover text-white shadow-lg rounded-xl py-4 font-bold transition-all flex items-center justify-center gap-2 ${!isFormValid || !mpData.email ? "opacity-50 pointer-events-none" : "cursor-pointer"}`}
           >
             <Send className="w-5 h-5" /> Open Default App
-          </button>
+          </a>
 
           {!mpData.email && (
             <p className="text-red-600 text-sm text-center mt-2 font-medium">
