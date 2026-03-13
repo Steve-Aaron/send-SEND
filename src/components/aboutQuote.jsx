@@ -1,4 +1,13 @@
-export function AboutQuote({ title, heading, p1, p2, cta, quote, link }) {
+export function AboutQuote({
+  title,
+  heading,
+  p1,
+  p2,
+  followupText,
+  cta,
+  quote,
+  link,
+}) {
   return (
     <section className="bg-brand text-white py-24 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10 shaded-gradient"></div>
@@ -29,6 +38,15 @@ export function AboutQuote({ title, heading, p1, p2, cta, quote, link }) {
             >
               {cta || "Read the Full Consultation"}
             </a>
+          </div>
+          <div className="text-base text-slate-300 leading-relaxed">
+            {followupText.map((item, index) => (
+              <p
+                key={index}
+                className="text-base text-slate-300 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: item }}
+              />
+            ))}
           </div>
         </div>
         <div className="md:w-5/12 relative">

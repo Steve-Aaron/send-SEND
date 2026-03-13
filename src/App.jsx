@@ -10,7 +10,7 @@ import { Hero } from "./components/Hero";
 import { WhySupportUs } from "./components/WhySupportUs";
 import { ConsultationProcess } from "./components/ConsultationProcess";
 import { Footer } from "./components/Footer";
-import { AboutQuote } from "./components/aboutUsHomepage";
+import { AboutQuote } from "./components/aboutQuote";
 import { Timeline } from "./components/Timeline";
 import { Quote } from "./components/Quote";
 
@@ -25,7 +25,6 @@ function MainApp() {
       <Hero
         subTitle="Your views on SEND reform"
         titleWhite="Email your MP" // and those who will determine our children’s future
-        titleAccent="To Protect SEND"
         subheading="The Government has published much-needed proposals to reform the Special Educational Needs and Disabilities (SEND) system. Whilst we welcome much that is proposed, there are clear dangers that change will bring. Together, we aim to ensure that these dangers are avoided. The consequences for the future provision of our children’s future could be catastrophic if not understood and addressed by the Government in its Consultation.
 Parents, teachers and professionals can contribute their views during the consultation period.
 "
@@ -68,17 +67,17 @@ Parents, teachers and professionals can contribute their views during the consul
         heading="Write to your MP"
         p1="Members of Parliament represent the concerns of families in their constituencies. Writing to your MP is one way to ensure that your experience of SEND support is part of the national discussion."
         p2="Use our ‘Find Your MP’ Tool to send your local MP your views by email. You can edit the email, adding personal arguments, before you send.’"
+        followupText={[
+          "You can email the consultation directly with your views:",
+          "<a class='underline text-white-300 font-bold pb-4' href='mailto:SENDreform.CONSULTATION@education.gov.uk'>SENDreform.CONSULTATION@education.gov.uk</a>.",
+          "<p class='pb-5'></p>",
+          "And you can share your experience of SEND support and your views on the proposed reforms with the Department for Education.",
+          "<a class='underline text-white-300 font-bold' href='mailto:ministerial.correspondence@education.gov.uk'>ministerial.correspondence@education.gov.uk</a>.",
+        ]}
         cta="Read the Full Consultation"
         quote="Decisions about SEND policy affect children, families and schools across the country. The consultation process is an opportunity for parents and professionals to share their experiences and explain what works well and what needs to improve."
         link="https://consult.education.gov.uk/send-strategy-division/send-reform-putting-children-and-young-people-firs/"
       />
-
-      {/* </><AboutUs /> */}
-      <Quote
-        quote="Decisions about SEND policy affect children, families and schools across the country. The consultation process is an opportunity for parents and professionals to share their experiences and explain what works well and what needs to improve."
-        speaker="Test Testerson"
-      />
-      <div className="pb-20"></div>
     </>
   );
 }

@@ -15,7 +15,6 @@ export function Quote({ quote, speaker }) {
         viewport={{ once: true }}
         className="relative p-12 md:p-20 bg-brand rounded-[3rem] overflow-hidden text-center shadow-2xl"
       >
-        {/* Decorative Pattern overlay */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_2px_2px,white_1px,transparent_1px)] bg-[length:32px_32px]"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto space-y-6">
