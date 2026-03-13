@@ -28,7 +28,7 @@ export function Hero({ subTitle, titleWhite, titleAccent, subheading }) {
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white leading-tight">
             {titleWhite}
             <br />
-            <span className="text-accent italic"> {titleAccent}</span>
+            <span className="text-accent italic">{titleAccent}</span>
           </h2>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl font-medium leading-relaxed">
             {subheading}

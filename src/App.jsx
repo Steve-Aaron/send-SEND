@@ -24,7 +24,7 @@ function MainApp() {
     <>
       <Hero
         subTitle="Your views on SEND reform"
-        titleWhite="Email your MP" // and those who will determine our children’s future
+        titleWhite="Email your MP and those who will determine our children’s future"
         subheading="The Government has published much-needed proposals to reform the Special Educational Needs and Disabilities (SEND) system. Whilst we welcome much that is proposed, there are clear dangers that change will bring. Together, we aim to ensure that these dangers are avoided. The consequences for the future provision of our children’s future could be catastrophic if not understood and addressed by the Government in its Consultation.
 Parents, teachers and professionals can contribute their views during the consultation period.
 "
@@ -39,7 +39,7 @@ Parents, teachers and professionals can contribute their views during the consul
           {/* Left Column: Information Section */}
           <div className="flex-1 lg:w-1/2 space-y-16">
             <WhySupportUs
-              title="SEND Reform Consultation"
+              title="SEND Reform consultation"
               paragraphs={[
                 "The Government has proposed reforms to the Special Educational Needs and Disabilities (SEND) system.",
                 "These proposals could affect how support is delivered in schools, how funding works, and how children with different levels of need are supported.",
@@ -74,9 +74,9 @@ Parents, teachers and professionals can contribute their views during the consul
           "And you can share your experience of SEND support and your views on the proposed reforms with the Department for Education.",
           "<a class='underline text-white-300 font-bold' href='mailto:ministerial.correspondence@education.gov.uk'>ministerial.correspondence@education.gov.uk</a>.",
         ]}
-        cta="Read the Full Consultation"
+        cta="visit the Government consultation website"
         quote="Decisions about SEND policy affect children, families and schools across the country. The consultation process is an opportunity for parents and professionals to share their experiences and explain what works well and what needs to improve."
-        link="https://consult.education.gov.uk/send-strategy-division/send-reform-putting-children-and-young-people-firs/"
+        link="http://www.gov.uk/government/consultations/send-reform-putting-children-and-young-people-first"
       />
     </>
   );

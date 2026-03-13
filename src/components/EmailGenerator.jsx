@@ -27,14 +27,28 @@ export function EmailGenerator({ mpData, postcode, onBack }) {
 
   // Party-specific templates
   const getTemplate = (party, mpName) => {
-    const defaultSubject = `Urgent: Protect SEND Provision in our Constituency`;
+    const defaultSubject = `SEND reforms – protecting children with the most complex needs`;
 
     // Base template parts
-    const intro = `Dear ${mpName},
+    const intro = `Dear ${mpName} MP,`;
 
-As your constituent, I am writing to you with deep concern regarding the current threat to SEND provision in our community.`;
+    const coreMessage = `I am writing to you as a constituent and as a parent who cares deeply about the future of children with special educational needs and disabilities.
 
-    const coreMessage = `The proposed reforms fail to understand the complex needs of vulnerable children and the devastating impact these changes will have on families who already fight every day just to get basic support. We need you to stand up for those who cannot easily standalone.`;
+I understand that the Government is consulting on reforms to the SEND system. Improving support for children and families is clearly essential, and many parents will welcome efforts to make the system work better.
+
+At the same time, I hope reforms will recognise that some children have extremely complex needs. These are some of the most vulnerable children in our communities. Many have already struggled in several different schools before finally finding the specialist support that helps them feel safe, settled and able to learn.
+
+For these children, mainstream school is simply not an option - it is not able to meet their needs safely or effectively. Specialist provision is not a preference. It is often the only setting where they can receive the care, structure and expertise they require.
+
+I am concerned that overall changes to the system without understanding what these most vulnerable children need, could unintentionally make some of these placements harder to provide. If that were to happen, children who have already experienced multiple failed placements could once again find themselves without the support they need. Where will they go?
+
+If this specialist provision is lost for these children, it would not only affect them and their families. It would also place additional pressure on mainstream schools and teachers, who are already working hard to support a wide range of needs in their classrooms.
+
+Reform of the SEND system is clearly needed, but it must protect access to specialist provision for children with the most complex needs.
+
+As my local MP in ${mpData.constituency}, I would be grateful if you could raise this issue with the Department for Education and ensure that the practical implications for children, families and schools are properly considered as the consultation progresses.
+
+Thank you for taking the time to read this. I look forward to hearing from you.`;
 
     const signOff = `
 
@@ -48,71 +62,10 @@ ${formData.phone ? "Tel: " + formData.phone : ""}
 ${formData.email ? "Email: " + formData.email : ""}
 Your Constituent in ${mpData.constituency} `;
 
-    // Party-specific logic
-    switch (party.toLowerCase()) {
-      case "labour":
-        return {
-          subject: defaultSubject,
-          body: `${intro} \n\n${coreMessage} \n\nGiven the Labour Party's commitment to breaking down barriers to opportunity, I urge you to use your voice in government to ensure SEND funding is protected, not cut. We must build a system that works for all children.\n\nPlease reply to let me know what tangible steps you will take to protect SEND students in our constituency.${signOff}`,
-        };
-      case "conservative":
-        return {
-          subject: defaultSubject,
-          body: `${intro}\n\n${coreMessage}\n\nI urge you, as a member of the opposition, to hold the government closely to account on their SEND proposals. We need strong conservative voices defending the rights of families to choose the right educational path for their children.\n\nPlease reply to let me know how you intend to challenge these reforms in Parliament.${signOff}`,
-        };
-      case "liberal democrat":
-      case "lib dem":
-        return {
-          subject: defaultSubject,
-          body: `${intro}\n\n${coreMessage}\n\nThe Liberal Democrats have long championed fair funding for education and local community support. I urge you to use your platform to champion the rights of SEND children and oppose any top-down cuts that harm local provision.\n\nPlease reply to let me know how you will advocate for SEND families.${signOff}`,
-        };
-      case "green party":
-      case "green":
-        return {
-          subject: defaultSubject,
-          body: `${intro}\n\n${coreMessage}\n\nIn line with Green commitments to social justice and investing in community wellbeing, I ask that you strongly oppose these regressive SEND reforms. We need an education system that is truly inclusive and sustainable.\n\nPlease let me know how you will push for a fairer SEND system.${signOff}`,
-        };
-      case "reform uk":
-      case "reform":
-        return {
-          subject: defaultSubject,
-          body: `${intro}\n\n${coreMessage}\n\nI urge you to stand up for common sense and protect the families in our constituency who rely on this vital support. We need reform that improves services, not cuts that abandon children.\n\nPlease let me know how you plan to vote on this crucial issue.${signOff}`,
-        };
-      case "scottish national party":
-      case "snp":
-        return {
-          subject: defaultSubject,
-          body: `${intro}\n\n${coreMessage}\n\nI urge you to stand up for SEND provision and ensure that the needs of vulnerable children are not sidelined in Westminster.\n\nPlease let me know how you will vote on this vital issue.${signOff}`,
-        };
-      case "plaid cymru":
-        return {
-          subject: defaultSubject,
-          body: `${intro}\n\n${coreMessage}\n\nI urge you to fiercely defend the resources required for SEND education, ensuring our communities are not left behind.\n\nPlease reply outlining your planned actions to protect these provisions.${signOff}`,
-        };
-      case "sinn féin":
-      case "sinn fein":
-      case "democratic unionist party":
-      case "dup":
-      case "ulster unionist party":
-      case "uup":
-      case "social democratic & labour party":
-      case "sdlp":
-      case "alliance":
-        return {
-          subject: defaultSubject,
-          body: `${intro}\n\n${coreMessage}\n\nWhile education policy nuances differ, the principle of protecting the most vulnerable is universal. I ask for your support in opposing these broader detrimental changes.\n\nPlease let me know your stance on this issue.${signOff}`,
-        };
-      case "speaker":
-        return {
-          subject: `Constituent Concern: SEND Provision`,
-          body: `${intro}\n\n${coreMessage}\n\nI understand your unique position as Speaker, however as my constituency representative, I wanted to register my deep concern on this matter with your office.\n\nPlease let me know you have received this representation.${signOff}`,
-        };
-      default:
-        return {
-          subject: defaultSubject,
-          body: `${intro}\n\n${coreMessage}\n\nI urge you to support SEND education. Use your voice in the House of Commons and commit to protecting SEND funding and provision rather than cutting it.\n\nPlease reply to let me know how you intend to vote on this crucial issue and what tangible steps you will take to protect SEND students in our constituency.${signOff}`,
-        };
-    }
+    return {
+      subject: defaultSubject,
+      body: `${intro}\n\n${coreMessage}\n\n${signOff}`,
+    };
   };
 
   const { subject, body: generatedBody } = getTemplate(
