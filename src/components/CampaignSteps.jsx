@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParliamentApi } from '../hooks/useParliamentApi';
+import { trackPostcodeLookup } from '../utils/analytics';
 import { ProgressIndicator } from './ProgressIndicator';
 import { EmailGenerator } from './EmailGenerator';
 import { MapPin, Search, ArrowRight, ArrowLeft, User } from 'lucide-react';
@@ -24,6 +25,7 @@ export function CampaignSteps() {
         const data = await lookupPostcode(postcode);
         if (data) {
             setMpData(data);
+            trackPostcodeLookup(postcode, data);
             setStep(2);
             if (maxReachedStep < 2) setMaxReachedStep(2);
         }
