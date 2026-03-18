@@ -2,7 +2,6 @@ import React from "react";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import { Header } from "./components/Header";
 import { CampaignSteps } from "./components/CampaignSteps";
-import { AboutUs } from "./components/AboutUs";
 import { Privacy } from "./components/Privacy";
 import { Cookies } from "./components/Cookies";
 import { MobileNav } from "./components/MobileNav";
@@ -11,9 +10,6 @@ import { Hero } from "./components/Hero";
 import { WhySupportUs } from "./components/WhySupportUs";
 import { ConsultationProcess } from "./components/ConsultationProcess";
 import { Footer } from "./components/Footer";
-import { AboutQuote } from "./components/AboutQuote";
-import { Timeline } from "./components/Timeline";
-import { Quote } from "./components/Quote";
 
 /**
  * MainApp Component

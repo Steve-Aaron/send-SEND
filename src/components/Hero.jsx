@@ -1,5 +1,5 @@
 import React from "react";
-import { AboutQuoteSimple } from "./AboutQuote";
+import { AboutQuoteSimple } from "./AboutQuote.jsx";
 
 import { CampaignSteps } from "./CampaignSteps";
 
