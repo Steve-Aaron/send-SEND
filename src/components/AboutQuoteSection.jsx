@@ -1,3 +1,4 @@
+/*
 export function AboutQuote({
   title,
   heading,
@@ -64,6 +65,7 @@ export function AboutQuote({
     </section>
   );
 }
+*/
 
 export function AboutQuoteSimple({ p, followupText, cta, link }) {
   return (
