@@ -10,7 +10,7 @@ import { Hero } from "./components/Hero";
 import { WhySupportUs } from "./components/WhySupportUs";
 import { ConsultationProcess } from "./components/ConsultationProcess";
 import { Footer } from "./components/Footer";
-import { AboutQuote } from "./components/aboutQuote";
+import { AboutQuote } from "./components/AboutQuote";
 import { Timeline } from "./components/Timeline";
 import { Quote } from "./components/Quote";
 
@@ -52,8 +52,8 @@ Parents, teachers and professionals can contribute their views during the consul
             <ConsultationProcess />
           </div>
 
-          {/* Right Column: Sticky Form Section */}
-          <div className="w-full lg:w-[500px] xl:w-[550px] lg:shrink-0 relative">
+          {/* Right Column: Sticky Form Section (Desktop/Tablet) */}
+          <div className="hidden lg:block w-full lg:w-[500px] xl:w-[550px] lg:shrink-0 relative">
             <div className="lg:sticky lg:top-24 mt-8 lg:mt-0 lg:-mt-32 z-20">
               <div className="bg-white rounded-3xl shadow-2xl shadow-brand/10 border border-border-subtle p-2">
                 <CampaignSteps />
@@ -62,22 +62,6 @@ Parents, teachers and professionals can contribute their views during the consul
           </div>
         </div>
       </main>
-      <AboutQuote
-        title="Your views matter"
-        heading="Write to your MP"
-        p1="Members of Parliament represent the concerns of families in their constituencies. Writing to your MP is one way to ensure that your experience of SEND support is part of the national discussion."
-        p2="Use our ‘Find Your MP’ Tool to send your local MP your views by email. You can edit the email, adding personal arguments, before you send.’"
-        followupText={[
-          "You can email the consultation directly with your views:",
-          "<a class='underline text-white-300 font-bold pb-4' href='mailto:SENDreform.CONSULTATION@education.gov.uk'>SENDreform.CONSULTATION@education.gov.uk</a>.",
-          "<p class='pb-5'></p>",
-          "And you can share your experience of SEND support and your views on the proposed reforms with the Department for Education.",
-          "<a class='underline text-white-300 font-bold' href='mailto:ministerial.correspondence@education.gov.uk'>ministerial.correspondence@education.gov.uk</a>.",
-        ]}
-        cta="visit the Government consultation website"
-        quote="Decisions about SEND policy affect children, families and schools across the country. The consultation process is an opportunity for parents and professionals to share their experiences and explain what works well and what needs to improve."
-        link="http://www.gov.uk/government/consultations/send-reform-putting-children-and-young-people-first"
-      />
     </>
   );
 }
@@ -93,9 +77,9 @@ function App() {
         <header className="h-20 hidden md:flex items-center justify-between px-6 md:px-12 bg-white border-b border-border-subtle z-50 sticky top-0">
           <Link to="/" className="flex items-center gap-3 group cursor-pointer">
             <img
-              src="https://placehold.co/150x50/00245D/FFFFFF?text=saveSEND&font=Merriweather"
-              alt="saveSEND Logo"
-              className="h-10 object-contain"
+              src="/sys.png"
+              alt="SENDYourSay Logo"
+              className="h-12 object-contain"
             />
           </Link>
           <nav className="hidden md:flex items-center gap-6">

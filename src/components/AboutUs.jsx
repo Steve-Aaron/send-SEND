@@ -12,7 +12,7 @@ export function AboutUs() {
     {
       title: "Our Mission",
       description:
-        "saveSEND is a neutral platform built to empower communities, schools, and independent providers to easily connect with their Members of Parliament. By lowering the barrier to entry for civic engagement, we aim to ensure that the voices of the most vulnerable are heard.",
+        "SENDYourSay is a neutral platform built to empower communities, schools, and independent providers to easily connect with their Members of Parliament. By lowering the barrier to entry for civic engagement, we aim to ensure that the voices of the most vulnerable are heard.",
     },
     {
       title: "The Challenge",

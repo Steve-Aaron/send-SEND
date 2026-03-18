@@ -78,3 +78,8 @@ h4,
   background-image: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.4) 45%, rgba(255, 255, 255, 0.4) 55%, transparent 60%);
   background-size: 20px 20px;
 }
+
+.break-all-a a {
+  padding-top: 2.5rem;
+  word-break: break-all;
+}

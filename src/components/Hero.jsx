@@ -1,4 +1,7 @@
 import React from "react";
+import { AboutQuoteSimple } from "./AboutQuote";
+
+import { CampaignSteps } from "./CampaignSteps";
 
 /**
  * Hero Component
@@ -6,7 +9,10 @@ import React from "react";
  */
 export function Hero({ subTitle, titleWhite, titleAccent, subheading }) {
   return (
-    <div className="relative bg-brand py-24 md:py-32 px-6 lg:px-12 overflow-hidden bg-gradient-to-br from-brand to-[#001436]">
+    <div
+      id="campaign-hero"
+      className="relative bg-brand py-24 md:py-32 px-6 lg:px-12 overflow-hidden bg-gradient-to-br from-brand to-[#001436] scroll-mt-20"
+    >
       {/* Decorative background pattern */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -33,6 +39,27 @@ export function Hero({ subTitle, titleWhite, titleAccent, subheading }) {
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl font-medium leading-relaxed">
             {subheading}
           </p>
+
+          {/* Mobile/Tablet Only Form Integration */}
+          <div className="lg:hidden py-4">
+            <div className="bg-white rounded-3xl shadow-2xl p-2 border border-white/20">
+              <CampaignSteps />
+            </div>
+          </div>
+
+          <AboutQuoteSimple
+            p="Use our ‘Find Your MP’ Tool to send your local MP your views by email. You can edit the email, adding personal arguments, before you send."
+            followupText={[
+              "You can email the consultation directly with your views:",
+              "<a class='underline text-slate-300 font-bold pb-4' href='mailto:SENDreform.CONSULTATION@education.gov.uk'>SENDreform.CONSULTATION@education.gov.uk</a>.",
+              "<p class='pb-5'></p>",
+              "And you can share your experience of SEND support and your views on the proposed reforms with the Department for Education:",
+              "<a class='underline text-slate-300 font-bold' href='mailto:ministerial.correspondence@education.gov.uk'>ministerial.correspondence@education.gov.uk</a>.",
+            ]}
+            cta="Visit the Government consultation website"
+            quote="Decisions about SEND policy affect children, families and schools across the country. The consultation process is an opportunity for parents and professionals to share their experiences and explain what works well and what needs to improve."
+            link="http://www.gov.uk/government/consultations/send-reform-putting-children-and-young-people-first"
+          />
         </div>
       </div>
     </div>

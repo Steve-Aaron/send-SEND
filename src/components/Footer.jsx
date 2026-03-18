@@ -12,9 +12,9 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
             <img
-              src="https://placehold.co/120x40/FFFFFF/00245D?text=saveSEND"
-              alt="saveSEND Logo"
-              className="h-8 object-contain opacity-50"
+              src="/sys-white.png"
+              alt="SENDYourSay Logo"
+              className="h-12 object-contain"
             />
           </div>
           <p>

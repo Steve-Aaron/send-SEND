@@ -43,7 +43,7 @@ export function AboutQuote({
             {followupText.map((item, index) => (
               <p
                 key={index}
-                className="text-base text-slate-300 leading-relaxed"
+                className="text-base text-slate-300 leading-relaxed break-all"
                 dangerouslySetInnerHTML={{ __html: item }}
               />
             ))}
@@ -62,5 +62,39 @@ export function AboutQuote({
         </div>
       </div>
     </section>
+  );
+}
+
+export function AboutQuoteSimple({ p, followupText, cta, link }) {
+  return (
+    <>
+      <p className="text-lg md:text-xl text-slate-300 font-medium leading-relaxed">
+        {p}
+      </p>
+      <div className="pt-4">
+        <a
+          href={
+            link ||
+            "https://www.gov.uk/government/consultations/send-and-alternative-provision-green-paper"
+          }
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-accent hover:bg-accent-hover text-white rounded-xl px-8 py-4 font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer text-lg md:text-base"
+        >
+          {cta || "Read the Full Consultation"}
+        </a>
+      </div>
+      {followupText && (
+        <div className="text-base text-slate-300 leading-relaxed mt-6">
+          {followupText.map((item, index) => (
+            <p
+              key={index}
+              className="text-base text-slate-300 leading-relaxed break-all-a"
+              dangerouslySetInnerHTML={{ __html: item }}
+            />
+          ))}
+        </div>
+      )}
+    </>
   );
 }

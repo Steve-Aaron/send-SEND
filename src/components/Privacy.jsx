@@ -23,7 +23,7 @@ export function Privacy() {
           1. Introduction
         </h2>
         <p>
-          Welcome to saveSEND ("we", "our", or "us"). We respect your privacy
+          Welcome to SENDYourSay ("we", "our", or "us"). We respect your privacy
           and are committed to protecting your personal data. This privacy
           policy will inform you as to how we look after your personal data when
           you visit our website and tell you about your privacy rights and how
