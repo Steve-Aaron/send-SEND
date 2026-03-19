@@ -106,7 +106,7 @@ Your Constituent in ${mpData.constituency} `;
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
-              placeholder="My"
+              placeholder="First name"
               className={inputClass}
               required
             />
@@ -120,7 +120,7 @@ Your Constituent in ${mpData.constituency} `;
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              placeholder="MP"
+              placeholder="Surname"
               className={inputClass}
               required
             />

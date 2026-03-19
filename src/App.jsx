@@ -4,7 +4,6 @@ import { Header } from "./components/Header";
 import { CampaignSteps } from "./components/CampaignSteps";
 import { Privacy } from "./components/Privacy";
 import { Cookies } from "./components/Cookies";
-import { MobileNav } from "./components/MobileNav";
 import { AboutPage } from "./components/AboutPage";
 import { Hero } from "./components/Hero";
 import { WhySupportUs } from "./components/WhySupportUs";
@@ -69,7 +68,7 @@ Parents, teachers and professionals can contribute their views during the consul
 function App() {
   return (
     <HashRouter>
-      <div className="min-h-screen bg-bg-subtle text-text-primary flex flex-col font-sans pb-20 md:pb-0">
+      <div className="min-h-screen bg-bg-subtle text-text-primary flex flex-col font-sans">
         <Header />
 
         <Routes>
@@ -79,7 +78,6 @@ function App() {
           <Route path="/cookies" element={<Cookies />} />
         </Routes>
 
-        <MobileNav />
         <Footer />
       </div>
     </HashRouter>
