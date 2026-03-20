@@ -9,7 +9,7 @@ export function Cookies() {
           to="/"
           className="text-accent hover:text-accent-hover font-bold inline-flex items-center gap-2 mb-8 transition-colors"
         >
-          ← Back to Homepage
+          ← Return to Homepage
         </Link>
       </div>
 

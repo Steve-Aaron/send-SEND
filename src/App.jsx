@@ -21,7 +21,7 @@ function MainApp() {
       <Hero
         subTitle="Your views on SEND reform"
         titleWhite="Email your MP and those who will determine our children’s future"
-        subheading="The Government has published much-needed proposals to reform the Special Educational Needs and Disabilities (SEND) system. Whilst we welcome much that is proposed, there are clear dangers that change will bring. Together, we aim to ensure that these dangers are avoided. The consequences for the future provision of our children’s future could be catastrophic if not understood and addressed by the Government in its Consultation.
+        subheading="The Government has published much-needed proposals to reform the Special Educational Needs and Disabilities (SEND) system. Whilst we welcome much that is proposed, there are clear dangers that change will bring. Together, we aim to ensure that these dangers are avoided. The consequences of inappropriate and inadequate SEND provision on our children’s futures are potentially catastrophic if not understood and addressed by the Government in its Consultation.
 Parents, teachers and professionals can contribute their views during the consultation period.
 "
       />
