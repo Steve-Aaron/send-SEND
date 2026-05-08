@@ -18,9 +18,9 @@ export function Footer() {
             />
           </div>
           <p>
-            This website has been supported by Witherslack Group as part of its
-            commitment to supporting families and contributing constructively to
-            the national conversation on SEND reform.
+            This website is supported by the SEND Matters Coalition as part of a
+            wider effort to support constructive engagement on SEND reform and
+            policy development.
           </p>
         </div>
         <div className="flex flex-col md:items-end justify-center gap-2">
