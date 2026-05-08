@@ -36,3 +36,6 @@ dist/
 # Editor folders
 .vscode/
 .idea/
+
+# Custom
+letters.md

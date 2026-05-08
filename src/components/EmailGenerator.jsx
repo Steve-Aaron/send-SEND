@@ -17,6 +17,7 @@ export function EmailGenerator({ mpData, postcode, onBack }) {
     phone: "",
   });
   const [customBody, setCustomBody] = useState(null);
+  const [selectedLetter, setSelectedLetter] = useState(0);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -25,14 +26,19 @@ export function EmailGenerator({ mpData, postcode, onBack }) {
     }));
   };
 
+  const handleLetterChange = (letterId) => {
+    setSelectedLetter((prev) => (prev === letterId ? 0 : letterId));
+    setCustomBody(null);
+  };
+
   // Party-specific templates
-  const getTemplate = (party, mpName) => {
+  const getTemplate = (party, mpName, letterId) => {
     const defaultSubject = `SEND reforms – protecting children with the most complex needs`;
 
     // Base template parts
     const intro = `Dear ${mpName} MP,`;
 
-    const coreMessage = `I am writing to you as a constituent and as a parent who cares deeply about the future of children with special educational needs and disabilities.
+    const coreMessage0 = `I am writing to you as a constituent and as a parent who cares deeply about the future of children with special educational needs and disabilities.
 
 I understand that the Government is consulting on reforms to the SEND system. Improving support for children and families is clearly essential, and many parents will welcome efforts to make the system work better.
 
@@ -50,6 +56,42 @@ As my local MP in ${mpData.constituency}, I would be grateful if you could raise
 
 Thank you for taking the time to read this. I look forward to hearing from you.`;
 
+    const coreMessage1 = `I am writing to you as a constituent and as a parent of a child who currently attends a specialist SEND school. I care deeply about the future of children with special educational needs and disabilities.
+
+I know the Government is consulting on reforms to the SEND system. While it is important to improve support for children and families, I am worried that some of the changes could make it much harder to get and keep specialist school places, especially for children with the most complex needs.
+
+My child has already been through several failed placements in other schools. Mainstream school is simply not able to meet their needs safely or effectively. It is only in a specialist school that they feel safe, settled, and able to learn. For these children, specialist provision is not a luxury or a preference. It is a necessity.
+
+I am concerned that broad changes to the system, without properly understanding the needs of this small group of very vulnerable children, could reduce access to specialist places. If that happens, children who have already suffered a lot of trauma could be left without the right support. This would also put extra pressure on mainstream schools and teachers, who are already doing their best.
+
+Specialist provision gives much better outcomes and costs far less in the long run than failing these children. I understand that a child like mine who does not get the right support can end up costing taxpayers much more through healthcare, youth offending institutions (over £180,000 a year), or long-term benefit costs and loss of tax. With the right help, these children can learn, thrive, and give back to society.
+Reform is needed, but it must protect specialist provision for the children who really need it. Losing this vital support would hurt the children, their families, and schools across our area.
+
+As my local MP, I would be grateful if you could raise these concerns with the Department for Education. Please make sure the real impact on the most vulnerable children, their families, and schools is properly considered during the consultation.
+Thank you for taking the time to read my letter. I would welcome any reply on how you plan to support this issue.`;
+
+    const coreMessage2 = `I am writing to you as a constituent and as a parent who is fighting to get my child the specialist education they desperately need. I have a child with complex SEND and I am very worried about the current Government consultation on SEND reforms.
+
+I know from my own experience both the good and bad sides of being wired differently. That is why I strongly support specialist provision for children whose needs cannot be met in mainstream schools.
+
+Inclusion in mainstream school sounds good in theory, but for some children with extreme anxiety, trauma, sensory issues, and challenging behaviour, the noisy and busy environment can be overwhelming and damaging. My child has already struggled in previous settings. A specialist school is not a luxury or a preference. It is the only place where they can feel safe and make real progress.
+
+I am worried that these reforms could make it even harder for children like mine to get the specialist places they need. Parents are already exhausted from fighting the system, including going through costly tribunals. These tribunals rule in favour of families in around 97 percent of cases. We should not be making things even harder for families.
+Specialist provision gives much better outcomes and costs far less in the long run than failing these children. A child who does not get the right support can end up costing taxpayers much more through healthcare, youth offending institutions (over £180,000 a year), or long-term benefit costs and loss of tax. With the right help, these children can learn, thrive, and give back to society.
+
+There are simply not enough state special school places. We cannot afford to lose good independent specialist provision. That would only harm the children the system is supposed to protect.
+
+I urge you to raise this with the Department for Education. Please ensure that the reforms protect specialist placements for children with the most complex needs so families are not left without options.
+
+I would be very grateful for your support on this important issue and look forward to your response.`;
+
+    const coreMessage =
+      letterId === 1
+        ? coreMessage1
+        : letterId === 2
+          ? coreMessage2
+          : coreMessage0;
+
     const signOff = `
 
 Yours sincerely,
@@ -64,13 +106,14 @@ Your Constituent in ${mpData.constituency} `;
 
     return {
       subject: defaultSubject,
-      body: `${intro}\n\n${coreMessage}\n\n${signOff}`,
+      body: `${intro}\n\n${coreMessage}\n${signOff}`,
     };
   };
 
   const { subject, body: generatedBody } = getTemplate(
     mpData.party,
     mpData.name,
+    selectedLetter,
   );
   const currentBody = customBody !== null ? customBody : generatedBody;
 
@@ -196,6 +239,38 @@ Your Constituent in ${mpData.constituency} `;
               placeholder="07700 900000"
               className={inputClass}
             />
+          </div>
+        </div>
+
+        <div className="bg-brand/5 border border-brand/20 rounded-xl p-5 mt-6">
+          <p className="text-sm text-text-primary mb-4 font-medium leading-relaxed">
+            We have two example emails which you may find appropriate to send if
+            they are in line with your hopes and fears. You can amend as you
+            wish and write what you want your MP to understand.
+          </p>
+          <div className="space-y-3">
+            <label className="flex items-start gap-3 cursor-pointer group">
+              <input
+                type="checkbox"
+                checked={selectedLetter === 1}
+                onChange={() => handleLetterChange(1)}
+                className="w-5 h-5 mt-0.5 shrink-0 rounded border-border-strong text-brand focus:ring-brand cursor-pointer accent-brand"
+              />
+              <span className="text-sm font-medium text-text-primary group-hover:text-brand transition-colors">
+                For Parents with Children Currently at a Specialist School
+              </span>
+            </label>
+            <label className="flex items-start gap-3 cursor-pointer group">
+              <input
+                type="checkbox"
+                checked={selectedLetter === 2}
+                onChange={() => handleLetterChange(2)}
+                className="w-5 h-5 mt-0.5 shrink-0 rounded border-border-strong text-brand focus:ring-brand cursor-pointer accent-brand"
+              />
+              <span className="text-sm font-medium text-text-primary group-hover:text-brand transition-colors">
+                For Parents Hoping to Get Their Child into a Specialist School
+              </span>
+            </label>
           </div>
         </div>
 
