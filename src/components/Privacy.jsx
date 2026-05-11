@@ -61,8 +61,7 @@ export function Privacy() {
           4. Contact details
         </h2>
         <p>
-          If you have any questions about this privacy policy or our privacy
-          practices, please contact the campaign administrators.
+          If you have any questions about this privacy policy or our privacy practices, please contact the campaign administrators: <a href="mailto:admin@sendmatters.com">admin@sendmatters.com</a>.
         </p>
       </div>
     </div>
