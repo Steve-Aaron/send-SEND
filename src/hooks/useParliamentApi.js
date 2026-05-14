@@ -1,5 +1,11 @@
 import { useState } from 'react';
 
+// In development, requests are proxied through Vite to avoid CORS restrictions
+// on the Parliament API Contact endpoint. In production the full URL is used directly.
+const API_BASE = import.meta.env.DEV
+  ? '/parliament-api'
+  : 'https://members-api.parliament.uk';
+
 export function useParliamentApi() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -10,7 +16,7 @@ export function useParliamentApi() {
         try {
             const cleanPostcode = postcode.replace(/\s+/g, '').toUpperCase();
 
-            const res = await fetch(`https://members-api.parliament.uk/api/Location/Constituency/Search?searchText=${cleanPostcode}`);
+            const res = await fetch(`${API_BASE}/api/Location/Constituency/Search?searchText=${cleanPostcode}`);
 
             if (!res.ok) throw new Error('Failed to find constituency for this postcode');
             const data = await res.json();
@@ -27,7 +33,7 @@ export function useParliamentApi() {
             }
 
             // Fetch contact details for email
-            const contactRes = await fetch(`https://members-api.parliament.uk/api/Members/${member.id}/Contact`);
+            const contactRes = await fetch(`${API_BASE}/api/Members/${member.id}/Contact`);
             const contactData = await contactRes.json();
 
             let email = null;

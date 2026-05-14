@@ -8,4 +8,13 @@ export default defineConfig({
     tailwindcss(),
     react(),
   ],
+  server: {
+    proxy: {
+      '/parliament-api': {
+        target: 'https://members-api.parliament.uk',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/parliament-api/, ''),
+      },
+    },
+  },
 })

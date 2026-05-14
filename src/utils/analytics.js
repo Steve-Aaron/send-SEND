@@ -19,29 +19,36 @@ export const trackPostcodeLookup = (postcode, mpData) => {
   }
 };
 
+const LETTER_VARIANT_LABELS = {
+  0: "general",
+  1: "parent_child_in_specialist_school",
+  2: "parent_seeking_specialist_school",
+  3: "teaching_professional",
+};
+
 /**
  * Fired when the user clicks one of the three send buttons.
  *
- * @param {Object} params
- * @param {'gmail'|'outlook'|'mailto'} params.client      - Which email client was chosen
- * @param {string}  params.role                           - e.g. 'Class Teacher', 'Parent'
- * @param {string|null} params.parentSubtype              - 'general' | 'specialist-current' | 'specialist-seeking' (Parent only)
- * @param {string|null} params.schoolName                 - School name (professional roles only)
- * @param {Object}  params.mpData                         - MP data from parliament API
- * @param {boolean} params.emailEdited                    - Whether the user modified the template text
+ * @param {Object}  params
+ * @param {'gmail'|'outlook'|'mailto'} params.client
+ * @param {0|1|2|3} params.selectedLetter
+ * @param {Object}  params.mpData
+ * @param {boolean} params.emailEdited  - true if the user modified the template text
+ * @param {string}  params.jobTitle     - populated for teaching professionals only
+ * @param {string}  params.schoolName   - populated for teaching professionals only
  */
-export const trackEmailOpen = ({ client, role, parentSubtype, schoolName, mpData, emailEdited }) => {
+export const trackEmailOpen = ({ client, selectedLetter, mpData, emailEdited, jobTitle, schoolName }) => {
   if (typeof window !== "undefined" && window.dataLayer) {
     window.dataLayer.push({
       event: "email_open",
       email_client: client,
-      job_title: role,
-      parent_subtype: parentSubtype || null,
-      school_name: schoolName || null,
+      letter_variant: LETTER_VARIANT_LABELS[selectedLetter] ?? "general",
       constituency: mpData?.constituency || "Unknown",
       mp_name: mpData?.name || "Unknown",
       party: mpData?.party || "Unknown",
       email_edited: emailEdited,
+      job_title: jobTitle || null,
+      school_name: schoolName || null,
     });
   }
 };
