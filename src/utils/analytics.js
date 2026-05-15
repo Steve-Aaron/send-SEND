@@ -1,6 +1,6 @@
 /**
- * Analytics Utility for GA4 / GTM
- * Provides helper functions for tracking custom events.
+ * Analytics Utility for GA4
+ * Provides helper functions for tracking custom events via gtag().
  *
  * Events fired:
  *  - postcode_lookup  : user finds their MP
@@ -8,9 +8,8 @@
  */
 
 export const trackPostcodeLookup = (postcode, mpData) => {
-  if (typeof window !== "undefined" && window.dataLayer) {
-    window.dataLayer.push({
-      event: "postcode_lookup",
+  if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    window.gtag("event", "postcode_lookup", {
       postcode: postcode.toUpperCase(),
       constituency: mpData?.constituency || "Unknown",
       mp_name: mpData?.name || "Unknown",
@@ -38,9 +37,8 @@ const LETTER_VARIANT_LABELS = {
  * @param {string}  params.schoolName   - populated for teaching professionals only
  */
 export const trackEmailOpen = ({ client, selectedLetter, mpData, emailEdited, jobTitle, schoolName }) => {
-  if (typeof window !== "undefined" && window.dataLayer) {
-    window.dataLayer.push({
-      event: "email_open",
+  if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    window.gtag("event", "email_open", {
       email_client: client,
       letter_variant: LETTER_VARIANT_LABELS[selectedLetter] ?? "general",
       constituency: mpData?.constituency || "Unknown",
