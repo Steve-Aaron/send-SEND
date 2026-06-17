@@ -3,12 +3,10 @@
 @import "@fontsource/inter";
 
 @theme {
-  --color-brand: #00245D;
-  /* Navy, Dulwich style */
+  --color-brand: #1B3A8C;
   --color-brand-hover: #001A45;
 
-  --color-accent: #D4A66E;
-  /* Gold/Tan, Dulwich style */
+  --color-accent: #d2db5f;
   --color-accent-hover: #b88d55;
 
   --color-bg-main: #FFFFFF;

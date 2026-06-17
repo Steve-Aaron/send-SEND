@@ -7,7 +7,6 @@ import { Cookies } from "./components/Cookies";
 import { AboutPage } from "./components/AboutPage";
 import { Hero } from "./components/Hero";
 import { WhySupportUs } from "./components/WhySupportUs";
-import { ConsultationProcess } from "./components/ConsultationProcess";
 import { Footer } from "./components/Footer";
 
 /**
@@ -19,11 +18,9 @@ function MainApp() {
   return (
     <>
       <Hero
-        subTitle="Your views on SEND reform"
-        titleWhite="Email your MP and those who will determine our children’s future"
-        subheading="The Government has published much-needed proposals to reform the Special Educational Needs and Disabilities (SEND) system. Whilst we welcome much that is proposed, there are clear dangers that change will bring. Together, we aim to ensure that these dangers are avoided. The consequences of inappropriate and inadequate SEND provision on our children’s futures are potentially catastrophic if not understood and addressed by the Government in its Consultation.
-Parents, teachers and professionals can contribute their views during the consultation period.
-"
+        subTitle="Your voice in Parliament"
+        titleWhite="Tell Parliament Why SEND Support Matters"
+        subheading="The SEND consultation may have ended, but changes to the SEND system will now be shaped through Parliament. As proposals move through the House of Commons and House of Lords, MPs and Peers need to keep hearing directly from parents, carers, professionals and supporters."
       />
 
       {/* Two Column Content Area */}
@@ -35,17 +32,28 @@ Parents, teachers and professionals can contribute their views during the consul
           {/* Left Column: Information Section */}
           <div className="flex-1 lg:w-1/2 space-y-16">
             <WhySupportUs
-              title="SEND Reform consultation"
+              title="What happens next?"
               paragraphs={[
-                "The Government has proposed reforms to the Special Educational Needs and Disabilities (SEND) system.",
-                "These proposals could affect how support is delivered in schools, how funding works, and how children with different levels of need are supported.",
-                "The consultation process allows parents, teachers and members of the public to share their experiences and views before policy decisions are finalised.",
-                "Many children with additional needs are supported successfully in mainstream schools.",
-                "Others require more specialist support because of the complexity of their needs.",
-                "The current consultation includes proposals that could affect how support is provided across the system, which is why many families and professionals are taking part in the discussion.",
+                "The Government will review consultation responses before bringing forward its next proposals. Any legislation must then pass through Parliament, with scrutiny in both the House of Commons and House of Lords before it can become law.",
+                "That means there is still time to make sure children’s needs, legal rights and access to specialist support remain part of the discussion.",
               ]}
             />
-            <ConsultationProcess />
+            <WhySupportUs
+              title="Why email your MP now?"
+              paragraphs={[
+                "MPs hear from constituents on many different issues. When parents, carers and professionals take the time to share their experiences, it helps MPs understand the real impact of SEND policy in their local area.",
+                "We want them to hear your voice and to get this right.",
+                "Currently the government’s approach is on track to result in a number of unintended consequences. So an email can help remind decision-makers that:",
+              ]}
+              listItems={[
+                "Children’s needs must come first",
+                "Parents and young people must be heard",
+                "The right support must be available in the right setting",
+                "Legal rights and routes to challenge must be protected",
+                "Changes to the SEND system must avoid unintended harm",
+              ]}
+              cta={{ label: "Ask your MP to protect children’s SEND rights", href: "#campaign" }}
+            />
           </div>
 
           {/* Right Column: Sticky Form Section (Desktop/Tablet) */}
@@ -58,6 +66,46 @@ Parents, teachers and professionals can contribute their views during the consul
           </div>
         </div>
       </main>
+
+      {/* Closing call to action */}
+      <section className="bg-brand text-white py-24 md:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 shaded-gradient"></div>
+        <div className="absolute left-0 top-0 opacity-20 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="w-96 h-96 border-[40px] border-accent rounded-full blur-3xl"></div>
+        </div>
+        <div className="relative z-10 max-w-3xl mx-auto px-6 lg:px-12 text-center space-y-6">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight">
+            Keep families’ voices in Parliament
+          </h2>
+          <p className="text-lg md:text-xl text-slate-300 font-medium leading-relaxed">
+            Continue to email your MP as changes to the SEND system move through Parliament,
+            and stay up to date with the latest campaign news, resources and next steps at{" "}
+            <a
+              href="https://sendmatterscoalition.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline font-bold text-accent"
+            >
+              SENDMattersCoalition.com
+            </a>
+            .
+          </p>
+          <p className="text-base text-slate-400 leading-relaxed">
+            Please share this page with others and on your socials - we need to stand up for
+            our children.
+          </p>
+          <div className="pt-4">
+            <a
+              href="https://sendmatterscoalition.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-accent hover:bg-accent-hover text-white rounded-xl px-8 py-4 font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+            >
+              Find out more at SENDMattersCoalition.com
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

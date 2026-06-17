@@ -1,0 +1,5 @@
+# Site is not ready for search engines yet
+User-agent: *
+Disallow: /
+
+Sitemap: https://emailmp.freedom-and-fairness.org/sitemap.xml

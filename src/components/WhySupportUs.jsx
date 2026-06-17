@@ -2,10 +2,16 @@ import React from "react";
 
 /**
  * WhySupportUs Component
- * Explains why the campaign is necessary in a long-form format.
+ * Long-form information section: a heading, paragraphs, and optionally a
+ * numbered list of key points and a call-to-action button.
+ *
+ * Props:
+ *  - title:      section heading
+ *  - paragraphs: array of paragraph content (string or JSX)
+ *  - listItems:  optional array of strings rendered as a numbered list
+ *  - cta:        optional { label, href } rendered as a button
  */
-
-export function WhySupportUs({ title = "Support SEND Education", paragraphs }) {
+export function WhySupportUs({ title = "Support SEND Education", paragraphs, listItems, cta }) {
   const defaultParagraphs = [
     <>
       The 2026 SEND consultation represents a critical juncture for vulnerable
@@ -40,6 +46,32 @@ export function WhySupportUs({ title = "Support SEND Education", paragraphs }) {
           </p>
         ))}
       </div>
+
+      {listItems && (
+        <ol className="space-y-3 list-none p-0 m-0">
+          {listItems.map((item, index) => (
+            <li key={index} className="flex items-start gap-4">
+              <span className="shrink-0 w-8 h-8 rounded-full bg-accent/15 text-brand font-serif font-bold flex items-center justify-center mt-0.5">
+                {index + 1}
+              </span>
+              <span className="text-text-secondary font-medium leading-relaxed pt-1">
+                {item}
+              </span>
+            </li>
+          ))}
+        </ol>
+      )}
+
+      {cta && (
+        <div className="pt-2">
+          <a
+            href={cta.href}
+            className="inline-block bg-accent hover:bg-accent-hover text-white rounded-xl px-8 py-4 font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+          >
+            {cta.label}
+          </a>
+        </div>
+      )}
     </section>
   );
 }

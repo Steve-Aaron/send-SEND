@@ -35,9 +35,13 @@ export function EmailGenerator({ mpData, postcode, onBack }) {
 
   // ── Letter templates ────────────────────────────────────────────────────────
 
-  const subject = selectedLetter === 3
-    ? `Urgent concerns about the impact of SEND reforms on children with complex needs`
-    : `SEND reforms – protecting children with the most complex needs`;
+  const subjects = {
+    0: "Please protect children with complex SEND needs as legislation moves through Parliament",
+    1: "Please protect specialist SEND provision as legislation moves through Parliament",
+    2: "Please protect access to specialist SEND placements",
+    3: "Please protect specialist SEND provision for children with complex needs",
+  };
+  const subject = subjects[selectedLetter] || subjects[0];
 
   const signOff = isProfessional
     ? `Yours sincerely,
@@ -61,93 +65,53 @@ ${formData.phone ? "Tel: " + formData.phone : ""}
 ${formData.email ? "Email: " + formData.email : ""}
 Your Constituent in ${mpData.constituency}`;
 
+  // Shared body — identical across all four letters; only the opening line and
+  // subject differ (the teacher letter also carries role/school placeholders).
+  const sharedBody = `The Government's consultation on changes to the SEND system has now closed. As proposals are reviewed and any legislation moves through Parliament, I hope you will help ensure that children with the most complex needs are not overlooked.
+
+Improving support for children and families is essential. Earlier help, better mainstream support and a simpler system would be welcomed by many families.
+
+But some children have needs that cannot be met safely or effectively in mainstream schools. Many have already experienced failed placements, exclusions, trauma or long periods out of education before finally finding specialist support that helps them feel safe, settled and able to learn.
+
+For these children, specialist provision is not a preference. It is often the only place where they can receive the care, structure, therapy and expertise they need.
+
+I am concerned that broad changes to the SEND system, without proper safeguards, could make some specialist placements harder to access or maintain. Specialist provision is currently delivered through a mix of state and independent schools. Independent specialist schools play a vital role, particularly in areas where there are not enough state special school places.
+
+I understand that the Government is considering limits on what independent specialist schools can charge. While the aim may be to control costs, there is a real risk that this could make some provision financially unviable. If that leads to school closures, some of the most vulnerable children could be left without suitable education.
+
+These schools are often important local employers, rooted in their communities. Their costs reflect the complex support many children need, including therapy, specialist equipment, high staffing levels and one-to-one care.
+
+I completely understand that funding decisions are difficult. But failing to invest in the right support now can create far greater costs later. The Government spends almost £180,000 a year for each 15 to 17 year old placed in a male young offender institution, more than double the annual cost of many independent specialist school placements for children with the most complex needs.
+
+In England and Wales, up to 80% of children cautioned or sentenced within the youth justice system have SEND or are neurodivergent. This is not because SEND children are predisposed to offend. It is because unmet needs can lead to crisis, exclusion and behaviour that the system then punishes.
+
+There is also a strong positive case for investing early. Sufficient investment in provision that meets the needs of learners with complex SEND could yield an average of at least £380,000 per learner across their lifetime in value to society, after accounting for the cost of their education. Much of that value comes through the economy, but also through reduced pressure on local authorities, the NHS, police and justice services.
+
+The impact of school closures would not only be felt by children and families. It would also place extra pressure on mainstream schools and teachers, who are already working hard to support a wide range of needs.
+
+Mainstream inclusion is right for many children, and many children with SEND can and should flourish in mainstream education. But for those with the most complex needs, inclusion in the wrong setting can become exclusion in practice. It can leave children unable to learn, unsafe, overwhelmed and pushed further away from education, employment and society.
+
+Please raise this issue with the Department for Education and scrutinise any legislation carefully as it moves through Parliament.
+
+Changes to the SEND system are needed, but they must protect children's legal rights and ensure every child can access the support and setting they need.
+
+Thank you for taking the time to read this. I would welcome your response.`;
+
+  const openings = {
+    0: "I am writing as a constituent who cares deeply about the future of children with special educational needs and disabilities.",
+    1: "I am writing to you as a constituent and as a parent of a child who currently attends a specialist SEND school.",
+    2: "I am writing to you as a constituent and as a parent trying to secure the right specialist education for my child.",
+    3: `I am writing to you as a ${formData.jobTitle || "[teacher / teaching assistant / pastoral support worker / member of staff]"} at ${formData.schoolName || "[School Name]"}, a [specialist SEND / mainstream] school, and as a constituent in ${mpData.constituency}.`,
+  };
+
+  const buildLetter = (id) =>
+    `Dear ${mpData.name},\n\n${openings[id]}\n\n${sharedBody}\n\n${signOff}`;
+
   const letterBodies = {
-    // Default — general constituent
-    0: `Dear ${mpData.name} MP,
-
-I am writing to you as a constituent who cares deeply about the future of children with special educational needs and disabilities.
-
-I understand that the Government is consulting on reforms to the SEND system. Improving support for children and families is clearly essential, and many people will welcome efforts to make the system work better.
-
-At the same time, I hope reforms will recognise that some children have extremely complex needs. These are some of the most vulnerable children in our communities. Many have already struggled in several different schools before finally finding the specialist support that helps them feel safe, settled and able to learn.
-
-For these children, mainstream school is simply not an option — it is not able to meet their needs safely or effectively. Specialist provision is not a preference. It is often the only setting where they can receive the care, structure and expertise they require.
-
-I am concerned that overall changes to the system, without properly understanding what these most vulnerable children need, could unintentionally make some of these placements harder to provide. If that were to happen, children who have already experienced multiple failed placements could once again find themselves without the support they need.
-
-If this specialist provision is lost for these children, it would not only affect them and their families. It would also place additional pressure on mainstream schools and teachers, who are already working hard to support a wide range of needs in their classrooms.
-
-Reform of the SEND system is clearly needed, but it must protect access to specialist provision for children with the most complex needs.
-
-As my local MP in ${mpData.constituency}, I would be grateful if you could raise this issue with the Department for Education and ensure that the practical implications for children, families and schools are properly considered as the consultation progresses.
-
-Thank you for taking the time to read this. I look forward to hearing from you.
-
-${signOff}`,
-
-    // Option 1 — parent, child currently in specialist school
-    1: `Dear ${mpData.name} MP,
-
-I am writing to you as a constituent and as a parent of a child who currently attends a specialist SEND school. I care deeply about the future of children with special educational needs and disabilities.
-
-I know the Government is consulting on reforms to the SEND system. While it is important to improve support for children and families, I am worried that some of the changes could make it much harder to get and keep specialist school places, especially for children with the most complex needs.
-
-My child has already been through several failed placements in other schools. Mainstream school is simply not able to meet their needs safely or effectively. It is only in a specialist school that they feel safe, settled, and able to learn. For these children, specialist provision is not a luxury or a preference. It is a necessity.
-
-I am concerned that broad changes to the system, without properly understanding the needs of this small group of very vulnerable children, could reduce access to specialist places. If that happens, children who have already suffered a lot of trauma could be left without the right support. This would also put extra pressure on mainstream schools and teachers, who are already doing their best.
-
-Specialist provision gives much better outcomes and costs far less in the long run than failing these children. I understand that a child like mine who does not get the right support can end up costing taxpayers much more through healthcare, youth offending institutions (over £180,000 a year), or long-term benefit costs and loss of tax. With the right help, these children can learn, thrive, and give back to society.
-
-Reform is needed, but it must protect specialist provision for the children who really need it. Losing this vital support would hurt the children, their families, and schools across our area.
-
-As my local MP, I would be grateful if you could raise these concerns with the Department for Education. Please make sure the real impact on the most vulnerable children, their families, and schools is properly considered during the consultation.
-
-Thank you for taking the time to read my letter. I would welcome any reply on how you plan to support this issue.
-
-${signOff}`,
-
-    // Option 2 — parent, hoping to get child into specialist school
-    2: `Dear ${mpData.name} MP,
-
-I am writing to you as a constituent and as a parent who is fighting to get my child the specialist education they desperately need. I have a child with complex SEND and I am very worried about the current Government consultation on SEND reforms.
-
-I know from my own experience both the good and bad sides of being wired differently. That is why I strongly support specialist provision for children whose needs cannot be met in mainstream schools.
-
-Inclusion in mainstream school sounds good in theory, but for some children with extreme anxiety, trauma, sensory issues, and challenging behaviour, the noisy and busy environment can be overwhelming and damaging. My child has already struggled in previous settings. A specialist school is not a luxury or a preference. It is the only place where they can feel safe and make real progress.
-
-I am worried that these reforms could make it even harder for children like mine to get the specialist places they need. Parents are already exhausted from fighting the system, including going through costly tribunals. These tribunals rule in favour of families in around 97 percent of cases. We should not be making things even harder for families.
-
-Specialist provision gives much better outcomes and costs far less in the long run than failing these children. A child who does not get the right support can end up costing taxpayers much more through healthcare, youth offending institutions (over £180,000 a year), or long-term benefit costs and loss of tax. With the right help, these children can learn, thrive, and give back to society.
-
-There are simply not enough state special school places. We cannot afford to lose good independent specialist provision. That would only harm the children the system is supposed to protect.
-
-I urge you to raise this with the Department for Education. Please ensure that the reforms protect specialist placements for children with the most complex needs so families are not left without options.
-
-I would be very grateful for your support on this important issue and look forward to your response.
-
-${signOff}`,
-
-    // Option 3 — teaching professional
-    3: `Dear ${mpData.name} MP,
-
-I am a ${formData.jobTitle || "[Job Title]"} at ${formData.schoolName || "[School Name]"}, a specialist SEND school, and a constituent in ${mpData.constituency}.
-
-The Government's consultation on SEND reforms closes at midday on 18 May. While I support efforts to improve the system, I am deeply concerned that the most vulnerable children with the most complex needs could be put at risk.
-
-The children I teach have often experienced multiple failed placements and exclusions in other schools. For many of them, mainstream school is simply not able to meet their needs safely or effectively. Our specialist school is often their last chance to be included in and contribute to society; the only place where they feel safe, settled, and able to learn. For these children, specialist provision is not a luxury or a preference. It is a necessity.
-
-I fully support the Government's focus on early intervention and better support in mainstream schools. However, I am worried that the consultation does not give enough attention to children with the most complex needs. If changes make it harder to secure or maintain specialist places, these children could be left without the right support. This would harm them and their families, and it would also put extra pressure on mainstream schools and teachers who are already working hard.
-
-Specialist provision gives much better outcomes and costs far less in the long run than failing these children. A child who does not get the right support can end up costing taxpayers far more through healthcare, youth offending institutions (over £180,000 a year), or long-term benefit costs. With the right help, these children can learn, thrive, and contribute to society.
-
-I am proud of the progress the children in my class make every day, but I am concerned that important decisions about independent specialist schools could be made without proper detailed consultation. We cannot afford to lose high-quality specialist provision, especially when there are already not enough state special school places.
-
-As a ${formData.jobTitle || "[Job Title]"} working directly with these children every day, I urge you to raise this with the Department for Education. Please ensure that the reforms protect the right, targeted and adequate specialist provision for those with the most complex needs, so that no child is left without the support they require. The one size fits all approach will not work in these cases.
-
-I would welcome any reply from you on this important issue and would be happy to meet if that would be helpful.
-Thank you for taking the time to read my letter.
-
-${signOff}`,
+    0: buildLetter(0),
+    1: buildLetter(1),
+    2: buildLetter(2),
+    3: buildLetter(3),
   };
 
   const generatedBody = letterBodies[selectedLetter];

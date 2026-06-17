@@ -1,5 +1,4 @@
 import React from "react";
-import { AboutQuoteSimple } from "./AboutQuoteSection.jsx";
 
 import { CampaignSteps } from "./CampaignSteps";
 
@@ -47,19 +46,18 @@ export function Hero({ subTitle, titleWhite, titleAccent, subheading }) {
             </div>
           </div>
 
-          <AboutQuoteSimple
-            p="Use our ‘Find Your MP’ Tool to send your local MP your views by email. You can edit the email, adding personal arguments, before you send."
-            followupText={[
-              "You can email the consultation directly with your views:",
-              "<a class='underline text-slate-300 font-bold pb-4' href='mailto:SENDreform.CONSULTATION@education.gov.uk'>SENDreform.CONSULTATION@education.gov.uk</a>.",
-              "<p class='pb-5'></p>",
-              "And you can share your experience of SEND support and your views on the proposed reforms with the Department for Education:",
-              "<a class='underline text-slate-300 font-bold' href='mailto:ministerial.correspondence@education.gov.uk'>ministerial.correspondence@education.gov.uk</a>.",
-            ]}
-            cta="Visit the Government consultation website"
-            quote="Decisions about SEND policy affect children, families and schools across the country. The consultation process is an opportunity for parents and professionals to share their experiences and explain what works well and what needs to improve."
-            link="http://www.gov.uk/government/consultations/send-reform-putting-children-and-young-people-first"
-          />
+          <p className="text-lg md:text-xl text-slate-300 font-medium leading-relaxed">
+            Use our ‘Find Your MP’ tool to email your local MP directly. You can edit the
+            email, adding your own experiences, before you send.
+          </p>
+          <div className="pt-4">
+            <a
+              href="#campaign"
+              className="inline-block bg-accent hover:bg-accent-hover text-white rounded-xl px-8 py-4 font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+            >
+              Email your MP
+            </a>
+          </div>
         </div>
       </div>
     </div>
